@@ -5,9 +5,7 @@ def test_meta_filter(two_ns_simple):
     ns = two_ns_simple
     retis = Retis()
     retis.collect(
-        "-c", "skb",
-        "-m", "sk_buff.dev.name == 'veth01'",
-        "-p", "tp:net:netif_rx"
+        "-c", "skb", "-m", "sk_buff.dev.name == 'veth01'", "-p", "tp:net:netif_rx"
     )
     print(ns.run("ns0", "ping", "-c", "1", "10.0.42.2"))
     retis.stop()
@@ -18,9 +16,7 @@ def test_meta_filter(two_ns_simple):
                 "dev": {
                     "name": "veth01",
                 },
-                "ip": {
-                    "v6": {}
-                },
+                "ip": {"v6": {}},
             },
         },
         {
